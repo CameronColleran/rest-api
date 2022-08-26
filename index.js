@@ -4,6 +4,7 @@ import "dotenv/config";
 import express from "express";
 import mongoose from "mongoose";
 import postRoutes from "./routes/posts.js";
+import userRoutes from "./routes/users.js";
 
 const app = express();
 
@@ -11,6 +12,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 app.use("/posts", postRoutes);
+app.use("/users", userRoutes);
 
 // connecting to mongo db cluster
 const CONNECTION_URL = process.env.DB_CONNECTION;
