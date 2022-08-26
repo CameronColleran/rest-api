@@ -7,7 +7,7 @@ const router = express.Router();
 router.get("/", async (req, res) => {
   try {
     const users = await User.find();
-    res.status(201).json(users);
+    res.status(200).json(users);
   } catch (error) {
     res.status(400).json({ message: error });
   }
@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
 router.get("/:userId", async (req, res) => {
   try {
     const user = await User.findById(req.params.userId);
-    res.status(201).json(user);
+    res.status(200).json(user);
   } catch (error) {
     res.status(400).json({ message: error });
   }
@@ -45,7 +45,7 @@ router.post("/", async (req, res) => {
 router.delete("/:userId", async (req, res) => {
   try {
     const deletedUser = await User.remove({ _id: req.params.userId });
-    res.status(201).json(deletedUser);
+    res.status(200).json(deletedUser);
   } catch (error) {
     res.status(400).json({ message: error });
   }
@@ -58,7 +58,7 @@ router.patch("/:userId", async (req, res) => {
       { _id: req.params.userId },
       { $set: { biography: req.body.biography } }
     );
-    res.status(201).json(updatedUser);
+    res.status(200).json(updatedUser);
   } catch (error) {
     res.status(400).json({ message: error });
   }

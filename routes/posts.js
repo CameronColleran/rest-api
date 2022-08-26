@@ -8,7 +8,7 @@ router.get("/", async (req, res) => {
   // Retrieve all posts
   try {
     const posts = await Post.find();
-    res.status(201).json(posts);
+    res.status(200).json(posts);
   } catch (error) {
     res.status(400).json({ message: error });
   }
@@ -18,7 +18,7 @@ router.get("/", async (req, res) => {
 router.get("/:postId", async (req, res) => {
   try {
     const post = await Post.findById(req.params.postId);
-    res.status(201).json(post);
+    res.status(200).json(post);
   } catch (error) {
     res.status(400).json({ message: error });
   }
@@ -49,7 +49,7 @@ router.post("/", async (req, res) => {
 router.delete("/:postId", async (req, res) => {
   try {
     const deletedPost = await Post.remove({ _id: req.params.postId });
-    res.status(201).json(deletedPost);
+    res.status(200).json(deletedPost);
   } catch (error) {
     res.status(400).json({ message: error });
   }
@@ -62,7 +62,7 @@ router.patch("/:postId", async (req, res) => {
       { _id: req.params.postId },
       { $set: { title: req.body.title } }
     );
-    res.status(201).json(updatedPost);
+    res.status(200).json(updatedPost);
   } catch (error) {
     res.status(400).json({ message: error });
   }
